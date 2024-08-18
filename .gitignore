@@ -1,0 +1,25 @@
+# Python
+*.pyc
+__pycache__/
+
+# Conda
+/envs/
+
+# Django
+*.log
+db.sqlite3
+
+# React
+node_modules/
+/frontend/build
+
+# Environment variables
+.env
+
+# IDE
+.vscode/
+.idea/
+
+# OS generated files
+.DS_Store
+Thumbs.db
