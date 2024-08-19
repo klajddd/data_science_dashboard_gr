@@ -1,0 +1,7 @@
+asgiref==3.8.1
+Django==5.1
+djangorestframework==3.15.2
+psycopg2 @ file:///Users/builder/cbouss/perseverance-python-buildout/croot/psycopg2_1707342704678/work
+setuptools==72.1.0
+sqlparse @ file:///Users/builder/cbouss/perseverance-python-buildout/croot/sqlparse_1699250105010/work
+wheel==0.43.0

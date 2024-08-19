@@ -1,25 +1,38 @@
 # Python
 *.pyc
 __pycache__/
-
-# Conda
-/envs/
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+pip-log.txt
+pip-delete-this-directory.txt
 
 # Django
 *.log
+local_settings.py
 db.sqlite3
+db.sqlite3-journal
 
 # React
 node_modules/
 /frontend/build
 
-# Environment variables
-.env
-
-# IDE
-.vscode/
+# IDEs
 .idea/
+.vscode/
+*.swp
+*.swo
 
 # OS generated files
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
 Thumbs.db
+
+# Environment variables
+.env
