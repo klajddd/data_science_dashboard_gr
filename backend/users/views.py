@@ -1,30 +1,19 @@
-# users/views.py
-from rest_framework import generics, permissions
-from rest_framework.response import Response
-from rest_framework.authtoken.views import ObtainAuthToken
-from rest_framework.authtoken.models import Token
-from .serializers import UserRegistrationSerializer, UserSerializer
+from django.contrib.auth import login, authenticate
+from django.contrib.auth.forms import UserCreationForm
+from django.shortcuts import render, redirect
+from django.views import View
 
-class UserRegistrationView(generics.CreateAPIView):
-    serializer_class = UserRegistrationSerializer
-    permission_classes = [permissions.AllowAny]
+class RegisterView(View):
+    def get(self, request):
+        form = UserCreationForm()
+        return render(request, 'users/register.html', {'form': form})
 
-class UserLoginView(ObtainAuthToken):
-    def post(self, request, *args, **kwargs):
-        serializer = self.serializer_class(data=request.data,
-                                           context={'request': request})
-        serializer.is_valid(raise_exception=True)
-        user = serializer.validated_data['user']
-        token, created = Token.objects.get_or_create(user=user)
-        return Response({
-            'token': token.key,
-            'user_id': user.pk,
-            'email': user.email
-        })
+    def post(self, request):
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect('home')  # Redirect to home page after registration
+        return render(request, 'users/register.html', {'form': form})
 
-class UserProfileView(generics.RetrieveUpdateAPIView):
-    serializer_class = UserSerializer
-    permission_classes = [permissions.IsAuthenticated]
-
-    def get_object(self):
-        return self.request.user
+# Note: For login and logout, we'll use Django's built-in views

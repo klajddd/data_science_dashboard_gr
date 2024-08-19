@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>{{ question.title }}</h1>
+  <p>Difficulty: {{ question.get_difficulty_display }}</p> -->
+  <h2>Description:</h2>
+  <p>{{ question.description }}</p>
+  <h2>Initial Code:</h2>
+  <pre><code>{{ question.initial_code }}</code></pre>
+  <!-- You might want to add a code editor component here later -->
+  <h2>Test Cases:</h2>
+  <pre>{{ question.test_cases|json_script:"test-cases" }}</pre>
+  <!-- You can add a submission form or button here
+{% endblock %}
